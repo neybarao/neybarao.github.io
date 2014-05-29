@@ -1,54 +1,17 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html lang="en" class="no-js ie6 oldie"> <![endif]-->
-<!--[if IE 7]>    <html lang="en" class="no-js ie7 oldie"> <![endif]-->
-<!--[if IE 8]>    <html lang="en" class="no-js ie8 oldie"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class='no-js' lang='en'>
-  <!--<![endif]-->
-  <head>
-    <meta charset='utf-8'>
-    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-    <title>Ney Ricardo - UX/UI designer</title>
-    <meta content='' name='description'>
-    <meta content='' name='author'>
-    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300,700' rel='stylesheet' type='text/css'>
-    <link href='stylesheets/screen.css' rel='stylesheet'>
-    <script src='js/modernizr-2.0.6.min.js'></script>
-  </head>
-  <body>
-    <div id='container'>
-      <header>
-        <img src="gfx/logo.svg" width="56" alt="Ney Ricardo" id="logo">
-        <h1>Ney Ricardo.</h1>
-      </header>
-      <div id='main' role='main'>
-        <p>Hi! I’m a UX/UI designer based in Brazil.</p>
-        <p>Have a look on <a href="http://www.dribbble.com/neyricardo">some work of mine <img src="gfx/dribbble.svg" height="30" alt="dribbble"></a></p>
-        <img src="gfx/smile.svg" height="30" alt="=)"> <a href="http://twitter.com/neyricardo"><img src="gfx/twitter.svg" height="30" alt="Twitter"></a></a>
-      </div>
-      <footer></footer>
-    </div>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
-    <script>
-      window.jQuery || document.write("<script src='js/jquery-1.6.2.min.js'>\x3C/script>")
-    </script>
-    <script src='js/plugins.js'></script>
-    <script src='js/script.js'></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<!doctype html>
 
-      ga('create', 'UA-30020866-1', 'neyricardo.com');
-      ga('send', 'pageview');
-    </script>
-    <!--[if lt IE 7]>
-    <script src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js'></script>
-    <script>
-      window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})});
-    </script>
-    <![endif]-->
-  </body>
-</html>
+<title>Portfolio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, user-scalable=0">
+<link rel="stylesheet" media="(max-width: 320px)" href="assets/css/mobile.css">
+<link rel="stylesheet" media="(min-width: 321px)" href="assets/css/desktop.css">
+<script>dribbbox = { version: 1.0 }</script>
+<script src="config.js"></script>
+
+<body><script>
+  (function() {
+    var s = document.createElement("script")
+    s.src = "assets/js/" + (matchMedia("(max-width: 320px)").matches ? "mobile" : "desktop") + ".js"
+    document.head.appendChild(s)
+  })()
+</script></body>
