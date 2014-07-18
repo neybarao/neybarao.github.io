@@ -1,0 +1,69 @@
+/* line 1, ../sass/style.sass */
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../gfx/background-photo.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  font-family: "Roboto";
+}
+
+/* line 14, ../sass/style.sass */
+.container {
+  text-align: center;
+}
+
+/* line 19, ../sass/style.sass */
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* line 25, ../sass/style.sass */
+#publicom {
+  padding-bottom: 10px;
+  background-color: white;
+  text-align: center;
+  color: #9b9b9b;
+}
+
+/* For mobile devices */
+@media only screen and (max-width: 767px) {
+  /* line 33, ../sass/style.sass */
+  body {
+    background-image: url(../gfx/background-photo-mobile-devices.jpg);
+  }
+
+  /* line 36, ../sass/style.sass */
+  #contact {
+    background-color: #e51c23;
+    border-top: 2px solid #ac151a;
+    overflow: hidden;
+    padding: 10px 0;
+    margin: 0;
+  }
+  /* line 43, ../sass/style.sass */
+  #contact ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+  }
+  /* line 48, ../sass/style.sass */
+  #contact ul a {
+    color: white;
+    display: block;
+    border-bottom: 1px solid #ac151a;
+    padding: 10px 0;
+    text-decoration: none;
+  }
+  /* line 54, ../sass/style.sass */
+  #contact ul a.noborder {
+    border: none;
+  }
+}
