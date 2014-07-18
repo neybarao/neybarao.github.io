@@ -16,30 +16,70 @@ body {
   text-align: center;
 }
 
-/* line 19, ../sass/style.sass */
+/* line 17, ../sass/style.sass */
+#logo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin-left: -110px;
+  margin-top: -22px;
+}
+
+/* line 24, ../sass/style.sass */
 #footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   font-size: 14px;
 }
-
-/* line 25, ../sass/style.sass */
-#publicom {
-  padding-bottom: 10px;
+/* line 30, ../sass/style.sass */
+#footer #contact {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+/* line 35, ../sass/style.sass */
+#footer #contact ul, #footer #contact li {
+  margin: 0;
+}
+/* line 37, ../sass/style.sass */
+#footer #contact li i {
+  color: #ac151a;
+}
+/* line 40, ../sass/style.sass */
+#footer #publicom {
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 10px 0;
   background-color: white;
   text-align: center;
   color: #9b9b9b;
+  margin: 0;
+}
+/* line 48, ../sass/style.sass */
+#footer #publicom p {
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 /* For mobile devices */
 @media only screen and (max-width: 767px) {
-  /* line 33, ../sass/style.sass */
+  /* line 54, ../sass/style.sass */
   body {
     background-image: url(../gfx/background-photo-mobile-devices.jpg);
   }
 
-  /* line 36, ../sass/style.sass */
+  /* line 57, ../sass/style.sass */
+  #logo {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-left: -110px;
+    margin-top: -22px;
+  }
+
+  /* line 64, ../sass/style.sass */
   #contact {
     background-color: #e51c23;
     border-top: 2px solid #ac151a;
@@ -47,22 +87,22 @@ body {
     padding: 10px 0;
     margin: 0;
   }
-  /* line 43, ../sass/style.sass */
+  /* line 71, ../sass/style.sass */
   #contact ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-left: 20px;
   }
-  /* line 48, ../sass/style.sass */
+  /* line 76, ../sass/style.sass */
   #contact ul a {
     color: white;
     display: block;
     border-bottom: 1px solid #ac151a;
-    padding: 10px 0;
+    padding: 15px 0;
     text-decoration: none;
   }
-  /* line 54, ../sass/style.sass */
+  /* line 82, ../sass/style.sass */
   #contact ul a.noborder {
     border: none;
   }
