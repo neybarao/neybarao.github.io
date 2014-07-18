@@ -44,10 +44,11 @@ body {
   margin: 0;
 }
 /* line 37, ../sass/style.sass */
-#footer #contact li i {
+#footer #contact li a i {
+  float: right;
   color: #ac151a;
 }
-/* line 40, ../sass/style.sass */
+/* line 41, ../sass/style.sass */
 #footer #publicom {
   box-sizing: border-box;
   overflow: hidden;
@@ -57,7 +58,7 @@ body {
   color: #9b9b9b;
   margin: 0;
 }
-/* line 48, ../sass/style.sass */
+/* line 49, ../sass/style.sass */
 #footer #publicom p {
   margin: 0;
   padding-bottom: 10px;
@@ -65,12 +66,12 @@ body {
 
 /* For mobile devices */
 @media only screen and (max-width: 767px) {
-  /* line 54, ../sass/style.sass */
+  /* line 55, ../sass/style.sass */
   body {
     background-image: url(../gfx/background-photo-mobile-devices.jpg);
   }
 
-  /* line 57, ../sass/style.sass */
+  /* line 58, ../sass/style.sass */
   #logo {
     position: absolute;
     top: 35%;
@@ -79,7 +80,7 @@ body {
     margin-top: -22px;
   }
 
-  /* line 64, ../sass/style.sass */
+  /* line 65, ../sass/style.sass */
   #contact {
     background-color: #e51c23;
     border-top: 2px solid #ac151a;
@@ -87,14 +88,14 @@ body {
     padding: 10px 0;
     margin: 0;
   }
-  /* line 71, ../sass/style.sass */
+  /* line 72, ../sass/style.sass */
   #contact ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-left: 20px;
   }
-  /* line 76, ../sass/style.sass */
+  /* line 77, ../sass/style.sass */
   #contact ul a {
     color: white;
     display: block;
@@ -102,7 +103,7 @@ body {
     padding: 15px 0;
     text-decoration: none;
   }
-  /* line 82, ../sass/style.sass */
+  /* line 83, ../sass/style.sass */
   #contact ul a.noborder {
     border: none;
   }
