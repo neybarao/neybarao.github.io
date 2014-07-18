@@ -38,12 +38,23 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #e51c23;
+  border-top: 2px solid #ac151a;
+  overflow: hidden;
+  padding: 10px 0;
 }
-/* line 35, ../sass/style.sass */
+/* line 39, ../sass/style.sass */
 #footer #contact ul, #footer #contact li {
   margin: 0;
 }
-/* line 38, ../sass/style.sass */
+/* line 41, ../sass/style.sass */
+#footer #contact ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-left: 20px;
+}
+/* line 46, ../sass/style.sass */
 #footer #contact ul a {
   color: white;
   display: block;
@@ -52,18 +63,18 @@ body {
   padding-right: 10px;
   text-decoration: none;
 }
-/* line 45, ../sass/style.sass */
+/* line 53, ../sass/style.sass */
 #footer #contact ul a.noborder {
   border: none;
 }
-/* line 47, ../sass/style.sass */
+/* line 55, ../sass/style.sass */
 #footer #contact ul li a i {
   margin-right: 10px;
   font-size: 20px;
   float: right;
   color: #ac151a;
 }
-/* line 53, ../sass/style.sass */
+/* line 61, ../sass/style.sass */
 #footer #publicom {
   box-sizing: border-box;
   overflow: hidden;
@@ -73,7 +84,7 @@ body {
   color: #9b9b9b;
   margin: 0;
 }
-/* line 61, ../sass/style.sass */
+/* line 69, ../sass/style.sass */
 #footer #publicom p {
   margin: 0;
   padding-bottom: 10px;
@@ -81,12 +92,12 @@ body {
 
 /* For mobile devices */
 @media only screen and (max-width: 767px) {
-  /* line 67, ../sass/style.sass */
+  /* line 75, ../sass/style.sass */
   body {
     background-image: url(../gfx/background-photo-mobile-devices.jpg);
   }
 
-  /* line 70, ../sass/style.sass */
+  /* line 78, ../sass/style.sass */
   #logo {
     position: absolute;
     top: 35%;
@@ -95,7 +106,7 @@ body {
     margin-top: -22px;
   }
 
-  /* line 77, ../sass/style.sass */
+  /* line 85, ../sass/style.sass */
   #contact {
     background-color: #e51c23;
     border-top: 2px solid #ac151a;
@@ -103,14 +114,14 @@ body {
     padding: 10px 0;
     margin: 0;
   }
-  /* line 84, ../sass/style.sass */
+  /* line 92, ../sass/style.sass */
   #contact ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-left: 20px;
   }
-  /* line 89, ../sass/style.sass */
+  /* line 97, ../sass/style.sass */
   #contact ul a {
     color: white;
     display: block;
@@ -118,7 +129,7 @@ body {
     padding: 15px 0;
     text-decoration: none;
   }
-  /* line 95, ../sass/style.sass */
+  /* line 103, ../sass/style.sass */
   #contact ul a.noborder {
     border: none;
   }
