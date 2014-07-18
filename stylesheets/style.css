@@ -515,6 +515,14 @@ body {
   display: block;
 }
 
+.links {
+  font-size: 18px;
+}
+
+.links a {
+  color: white;
+}
+
 /* line 49, ../sass/style.sass */
 h1 {
   display: block;
