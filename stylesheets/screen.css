@@ -100,6 +100,10 @@ body {
   color: white;
 }
 
+.links a:hover {
+  color: #00f6ff;
+}
+
 /* line 40, ../sass/screen.sass */
 h1 {
   display: block;
