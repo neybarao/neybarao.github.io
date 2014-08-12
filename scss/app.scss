@@ -68,7 +68,7 @@ body {
 	left: 50%;
 	width: 300px;
 	margin-top: -120px;
-	margin-left: -140px;
+	margin-left: -150px;
 	z-index: 100;
 	font-size: 24px;
 	color: #93161A;
@@ -76,9 +76,12 @@ body {
 	a {
 		color: white;
 		margin: 0 10px;
+		&:hover {
+			color: #93161A;
+		}
 	}
 	h1 {
-		font-size: 64px;
+		font-size: 56px;
 		color: white;
 		font-weight: 100;
 		margin: 0;
@@ -114,21 +117,28 @@ body {
 	height: auto;
 	z-index: 1;
 	overflow: hidden;
-	background-image: url('../images/bg-photo.jpg');
+	//background-image: url('../images/bg-photo.jpg');
 	background-position: center center;
 	background-size: cover;
 	z-index: 1;
 }
 
 @media (max-width:768px){
-	body, #video_backgroun {
-		background-image: url('../images/bg-photo-mobile.jpg');
+	body, #video_background {
+		background-color: #141414;
+		color: white;
+		//background-image: url('../images/bg-photo-mobile.jpg');
 	}
 
-	.message p {
-		line-height: 1em;
-		margin: 0;
-		margin-bottom: 5px;
+	.overlay {display: none;}
+
+	.message {
+		p {
+			line-height: 1em;
+			margin: 0;
+			margin-bottom: 5px;
+			color: #666;
+		}
 	}
 
 	#video_background {
