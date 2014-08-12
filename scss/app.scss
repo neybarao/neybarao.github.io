@@ -71,13 +71,13 @@ body {
 	margin-left: -150px;
 	z-index: 100;
 	font-size: 24px;
-	color: #93161A;
+	color: #700B1C;
 	font-weight: 300;
 	a {
 		color: white;
 		margin: 0 10px;
 		&:hover {
-			color: #93161A;
+			color: #700B1C;
 		}
 	}
 	h1 {
@@ -99,7 +99,7 @@ body {
 .overlay {
 	position: fixed;
 	opacity: 0.6;
-	background-color: rgba(235,8,18,0.9);
+	background-color: rgba(200,35,63,1);
 	left: 0;
 	top: 0;
 	width: 100%;
