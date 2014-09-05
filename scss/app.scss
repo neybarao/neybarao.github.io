@@ -71,7 +71,7 @@ body {
 	margin-left: -150px;
 	z-index: 100;
 	font-size: 24px;
-	color: #700B1C;
+	color: #00673A;
 	font-weight: 300;
 	a {
 		color: white;
@@ -98,8 +98,7 @@ body {
 
 .overlay {
 	position: fixed;
-	opacity: 0.6;
-	background-color: rgba(200,35,63,1);
+	background-color: rgba(0,217,123,0.7);
 	left: 0;
 	top: 0;
 	width: 100%;
