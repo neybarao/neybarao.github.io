@@ -51,9 +51,10 @@ html, body {
 }
 
 body {
-	background-image: url('../images/bg-photo.jpg');
-	background-position: center center;
-	background-size: cover;
+	// background-image: url('../images/bg-photo.jpg');
+	// background-position: center center;
+	// background-size: cover;
+	background-color: white;
 }
 
 .logo {
@@ -118,8 +119,8 @@ body {
 
 @media (max-width:768px){
 	body, #video_background {
-		background-color: #141414;
-		color: white;
+		background-color: white;
+		// color: white;
 		//background-image: url('../images/bg-photo-mobile.jpg');
 	}
 
