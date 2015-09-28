@@ -94,10 +94,11 @@ body {
 		font-family: 'Lato', sans-serif;
 		text-transform: uppercase;
 		letter-spacing: 0.2em;
-		color: #999;
+		color: #666;
 	}
 	strong {
 		font-weight: 400;
+		color: #f30;
 	}
 }
 
@@ -110,6 +111,7 @@ body {
 	a {
 		color: #333;
 		margin: 0 10px;
+		padding: 5px;
 		@include adjust-font-size-to(18px);
 		&:hover {
 			color: #0076FF;
