@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52px" height="24px" viewBox="0 0 52 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>logo-nr</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="2.41948342%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FF223E" offset="0%"></stop>
+            <stop stop-color="#491618" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Portrait" transform="translate(-24.000000, -48.000000)">
+            <g id="menu-overlay" transform="translate(-40.000000, 0.000000)">
+                <g id="logo-nr" transform="translate(64.000000, 48.000000)">
+                    <g id="Fill-1-+-Fill-3">
+                        <polygon id="Fill-1" fill="url(#linearGradient-1)" points="12 24 24 24 24 0 12 0"></polygon>
+                        <polyline id="Fill-3" fill="#FF223E" points="24 24 0 24 0 0 24 24"></polyline>
+                    </g>
+                    <g id="Group-3" transform="translate(28.000000, 0.000000)">
+                        <rect id="Rectangle-2" fill="url(#linearGradient-1)" x="0" y="0" width="24" height="16"></rect>
+                        <polygon id="Fill-3" fill="#FF223E" points="0 24 0 0 24 24"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

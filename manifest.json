@@ -1,0 +1,27 @@
+{
+  "short_name": "neyricardo",
+  "name": "Ney Ricardo, Product Designer",
+  "icons": [
+    {
+      "src": "images/launcher_48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "images/launcher_96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "images/launcher_192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#150621",
+  "background_color": "#150621",
+  "description": "The portfolio and contact page of Ney Ricardo, product designer",
+  "start_url": "index.html?launcher=true"
+}
