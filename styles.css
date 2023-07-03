@@ -109,8 +109,9 @@ nav.menu > ul li a:hover {
     left: 60px;
     width: 27rem;
     padding: 3rem;
-    background: rgba(15, 15, 15, 0.30);
+    background: rgba(15, 15, 15, 0.20);
     backdrop-filter: blur(20px);
+    border-radius: 2rem;
 }
 
 .slide > div h2 {
