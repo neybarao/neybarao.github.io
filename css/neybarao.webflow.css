@@ -13,7 +13,9 @@
 }
 
 .navbar-logo-left {
-  background-color: #f1f1f1;
+  color: var(--white);
+  mix-blend-mode: difference;
+  background-color: rgba(0, 0, 0, 0);
   justify-content: center;
   align-items: flex-start;
   width: 100%;
@@ -22,6 +24,7 @@
   padding-right: 24px;
   text-decoration: none;
   display: flex;
+  position: fixed;
 }
 
 .navbarcontainer {
@@ -59,7 +62,7 @@
 }
 
 .text {
-  color: #151515;
+  color: var(--white);
   margin-top: 0;
   margin-bottom: 0;
   font-family: Monasansexpanded, sans-serif;
@@ -71,6 +74,7 @@
 
 .navbar-menu {
   grid-column-gap: 32px;
+  color: var(--white);
   flex: 0 auto;
   justify-content: flex-start;
   align-items: center;
@@ -88,7 +92,7 @@
 }
 
 .menulink {
-  color: #151515;
+  color: var(--white);
   margin-top: 0;
   margin-bottom: 0;
   font-size: .875rem;
@@ -103,9 +107,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   min-height: auto;
-  max-height: 1020px;
+  max-height: 1080px;
   padding-top: 0;
   padding-bottom: 0;
   text-decoration: none;
@@ -1205,6 +1209,113 @@
   padding-left: 8px;
 }
 
+.hero-heading-left {
+  grid-column-gap: 80px;
+  background-color: #fff;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 110px);
+  padding: 160px 80px 80px;
+  text-decoration: none;
+  display: flex;
+}
+
+.container-13 {
+  grid-column-gap: 80px;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  text-decoration: none;
+  display: flex;
+}
+
+.column-4 {
+  grid-row-gap: 24px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+}
+
+.title-copy-goes-here-be-awesome {
+  color: #151515;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Monasansexpanded, sans-serif;
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 100%;
+  text-decoration: none;
+}
+
+.paragraph-text {
+  color: #3d3d4e;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Mona Sans, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 180%;
+  text-decoration: none;
+}
+
+.actions {
+  grid-column-gap: 16px;
+  flex: 0 auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 16px;
+  text-decoration: none;
+  display: flex;
+}
+
+.button {
+  grid-column-gap: 8px;
+  background-color: #000;
+  flex: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  text-decoration: none;
+  display: flex;
+}
+
+.text-29 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: .75rem;
+  font-weight: 500;
+  line-height: 140%;
+  text-decoration: none;
+}
+
+.column-5 {
+  grid-column-gap: 10px;
+  flex: 0 auto;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-decoration: none;
+  display: flex;
+}
+
+.image-wrapper {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  display: flex;
+}
+
+.photo-neybarao {
+  object-fit: cover;
+  width: 870px;
+}
+
 @media screen and (max-width: 991px) {
   .navbar-logo-left {
     padding-right: 0;
@@ -1226,10 +1337,17 @@
   .column, .column-2, .content, .footer-links {
     align-items: center;
   }
+
+  .container-13 {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 479px) {
   .navbar-logo-left {
+    color: var(--black);
+    mix-blend-mode: normal;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -1237,6 +1355,10 @@
 
   .navbar-content {
     align-self: auto;
+  }
+
+  .text {
+    color: var(--black);
   }
 
   .navbar-menu {
@@ -1261,15 +1383,24 @@
   }
 
   .menulink {
+    color: var(--black);
     font-size: 2rem;
   }
 
   .hero-section {
-    height: 60vh;
+    background-image: url('../images/bg-fallback.png');
+    background-position: 50%;
+    background-size: 567px;
+    height: 75vh;
   }
 
   .just-another-design-portfolio {
     font-size: 4.3rem;
+  }
+
+  .columns {
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
   }
 
   .small-columns {
@@ -1405,6 +1536,44 @@
     position: relative;
     top: 0;
     left: 0;
+  }
+
+  .hero-heading-left {
+    object-fit: contain;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    padding: 40px 24px;
+  }
+
+  .container-13 {
+    grid-row-gap: 40px;
+  }
+
+  .title-copy-goes-here-be-awesome {
+    font-size: 2rem;
+  }
+
+  .paragraph-text {
+    font-size: 1rem;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .column-5 {
+    order: -1;
+  }
+
+  .photo-neybarao {
+    width: 100%;
+    max-width: none;
+    height: auto;
   }
 }
 
