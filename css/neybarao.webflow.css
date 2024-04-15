@@ -1506,14 +1506,15 @@ h1 {
 
 .container-16 {
   width: 100%;
-  max-width: 940px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .features-wrapper {
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
+  width: 100%;
   display: flex;
 }
 
@@ -1522,6 +1523,7 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  width: 20%;
   display: flex;
 }
 
@@ -1647,6 +1649,10 @@ h1 {
   font-weight: 400;
   line-height: 150%;
   text-decoration: none;
+}
+
+.text-block-3, .text-block-4, .text-block-5 {
+  font-weight: 700;
 }
 
 @media screen and (max-width: 991px) {
