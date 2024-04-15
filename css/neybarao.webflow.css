@@ -1393,8 +1393,7 @@ h1 {
 
 .section-10.bg-senac {
   background-image: url('../images/senac-header.png'), linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
-  background-position: 50%, 0 0;
-  background-size: cover, auto;
+  background-position: 50% 0, 0 0;
 }
 
 .section-10.al5-header {
@@ -1492,7 +1491,7 @@ h1 {
 }
 
 .case-image {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: auto;
   width: 100%;
   max-width: 1440px;
   margin-bottom: 40px;
@@ -1565,8 +1564,6 @@ h1 {
 
 .senac03 {
   object-fit: contain;
-  width: 388px;
-  height: 760px;
   position: absolute;
   top: 27.7607px;
   left: 956.086px;
@@ -1574,19 +1571,13 @@ h1 {
 
 .senac02 {
   object-fit: contain;
-  width: 386px;
-  height: 750px;
   position: absolute;
   top: 33.7607px;
   left: 527.086px;
 }
 
 .senac01 {
-  object-fit: contain;
-  width: 364px;
-  max-width: none;
-  height: 750px;
-  min-height: auto;
+  object-fit: scale-down;
   position: absolute;
   top: 34.7607px;
   left: 120.086px;
