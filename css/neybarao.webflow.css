@@ -1381,8 +1381,8 @@ h1 {
 }
 
 .section-10 {
-  background-image: url('../images/al5-header.png'), linear-gradient(to bottom, var(--black), var(--black));
-  background-position: 50%, 0 0;
+  background-image: url('../images/227shots_so.png'), linear-gradient(to bottom, var(--black), var(--black));
+  background-position: 50% 27%, 0 0;
   background-repeat: repeat, repeat;
   background-size: cover, auto;
   background-attachment: scroll, scroll;
@@ -1529,6 +1529,7 @@ h1 {
 
 .features-title {
   margin-bottom: 8px;
+  font-family: Monasansexpanded, sans-serif;
   font-size: 40px;
   font-weight: 600;
   line-height: 48px;
