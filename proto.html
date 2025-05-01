@@ -7,40 +7,24 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <title>Add to Home Screen</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
+    body {
       font-family: -apple-system, sans-serif;
-      background: #f9f9f9;
-      height: 100%;
       text-align: center;
-    }
-    #prompt {
       padding: 20px;
-      display: none;
-    }
-    iframe {
-      border: 0;
-      width: 100vw;
-      height: 100vh;
     }
   </style>
 </head>
 <body>
-  <div id="prompt">
-    <p>To add this app to your Home Screen:</p>
-    <p><strong>Tap <span style="font-size: 1.5em;">&#x1F4D1;</span> then “Add to Home Screen”</strong></p>
-  </div>
-
-  <div id="figma-container" style="display:none;">
-    <iframe src="https://embed.figma.com/proto/JB9ElfcdMOCryDUi6Xf3rg/MTR-Training-Module?page-id=0%3A1&node-id=2-1461&p=f&viewport=3048%2C9164%2C0.07&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A1461&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>
+  <div id="prompt" style="display: none;">
+    <h3>To access the prototype:</h3>
+    <p>Tap <strong>Share</strong> <span style="font-size: 1.5em;">&#x1F4E4;</span> then choose <strong>"Add to Home Screen"</strong></p>
   </div>
 
   <script>
-    const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-    
-    if (isInStandaloneMode) {
-      document.getElementById('figma-container').style.display = 'block';
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    if (isStandalone) {
+      window.location.href = "https://www.figma.com/proto/JB9ElfcdMOCryDUi6Xf3rg/MTR-Training-Module?page-id=0%3A1&node-id=2-1461&p=f&t=HglvcyeIhIYlHudv-0&scaling=scale-down&content-scaling=fixed&starting-point-node-id=2%3A1461&show-proto-sidebar=1";
     } else {
       document.getElementById('prompt').style.display = 'block';
     }
