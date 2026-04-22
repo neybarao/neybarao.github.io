@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://neybarao.github.io/sitemap.xml

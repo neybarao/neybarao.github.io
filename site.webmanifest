@@ -1,0 +1,26 @@
+{
+  "name": "Ney Barão — Senior Product Designer",
+  "short_name": "Ney Barão",
+  "description": "Portfolio de Ney Barão — Senior Product Designer especializado em UX/UI, B2B SaaS, Fintech, HealthTech e Educação.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ECE8DF",
+  "theme_color": "#D94E1F",
+  "icons": [
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
