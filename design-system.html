@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light" data-lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ECE8DF">
+  <meta name="description" content="Design System — Visual guide for Ney Barão portfolio website">
+  <title>Design System — Ney Barão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Design System Page Specific Styles */
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--gutter); }
+    .ds-color-swatch { aspect-ratio: 1; border-radius: 4px; display: flex; align-items: flex-end; justify-content: flex-start; padding: 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+    .ds-color-swatch.light { color: var(--text); text-shadow: none; }
+
+    .ds-type-sample { padding: 1.5rem; background: var(--bg-soft); border-radius: 4px; margin-bottom: 0.5rem; }
+    .ds-type-label { font-family: var(--font-mono); font-size: var(--step--1); color: var(--muted); letter-spacing: 0.08em; margin-top: 0.5rem; }
+
+    .ds-component { padding: 1.5rem; background: var(--bg-soft); border-radius: 4px; border: 1px solid var(--line); margin-bottom: 1.5rem; }
+    .ds-component h4 { margin-bottom: 1rem; }
+
+    .ds-button-group { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; }
+    .ds-button { padding: 0.75rem 1.25rem; border: 1px solid currentColor; border-radius: 4px; font-size: var(--step-0); cursor: pointer; transition: all 0.3s var(--ease-out); }
+    .ds-button:hover { color: var(--accent); transform: translateY(-2px); }
+    .ds-button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+    .ds-button.primary:hover { background: var(--accent); opacity: 0.9; }
+
+    .ds-spacing-demo { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gutter); }
+    .ds-spacing-box { aspect-ratio: 1; background: var(--accent); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--bg); font-family: var(--font-mono); font-size: 0.75rem; }
+
+    .ds-motion-demo { height: 100px; background: var(--bg-soft); border-radius: 4px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .ds-motion-box { width: 40px; height: 40px; background: var(--accent); border-radius: 2px; position: absolute; left: 20px; }
+    .ds-motion-demo.slide .ds-motion-box { animation: ds-slide 2s var(--ease-out) infinite; }
+    .ds-motion-demo.fade .ds-motion-box { animation: ds-fade 2s var(--ease-out) infinite; }
+    .ds-motion-demo.scale .ds-motion-box { animation: ds-scale 2s var(--ease-out) infinite; }
+
+    @keyframes ds-slide { 0% { left: 20px; } 50% { left: calc(100% - 60px); } 100% { left: 20px; } }
+    @keyframes ds-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    @keyframes ds-scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+    .ds-page-section { padding: clamp(3rem, 8vh, 6rem) 0; border-bottom: 1px solid var(--line); }
+    .ds-page-section:last-child { border-bottom: none; }
+
+    .ds-code { background: var(--bg); padding: 1rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto; border: 1px solid var(--line); color: var(--muted); }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='10' fill='%23D94E1F'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand" aria-label="Ney Barão — home">
+        <span class="brand-dot"></span> Design System
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#colors" class="nav__link">
+          <span data-lang="pt">Cores</span><span data-lang="en">Colors</span>
+        </a>
+        <a href="#typography" class="nav__link">
+          <span data-lang="pt">Tipografia</span><span data-lang="en">Typography</span>
+        </a>
+        <a href="#components" class="nav__link">
+          <span data-lang="pt">Componentes</span><span data-lang="en">Components</span>
+        </a>
+        <a href="#motion" class="nav__link">
+          <span data-lang="pt">Movimento</span><span data-lang="en">Motion</span>
+        </a>
+      </nav>
+      <div class="nav__tools">
+        <button class="tool-btn" data-lang-toggle aria-label="Switch language">PT</button>
+        <button class="tool-btn" data-theme-toggle aria-label="Switch theme"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container">
+        <p class="hero__eyebrow">
+          <span class="dash"></span>
+          <span data-lang="pt">Sistema de Design</span>
+          <span data-lang="en">Design System</span>
+        </p>
+
+        <h1 class="hero__title">
+          <span data-lang="pt">Guia Visual</span>
+          <span data-lang="en">Visual Guide</span>
+        </h1>
+
+        <div class="hero__meta">
+          <p class="lead">
+            <span data-lang="pt">Documentação completa de tokens, componentes e padrões visuais da aplicação.</span>
+            <span data-lang="en">Complete documentation of tokens, components and visual patterns for the application.</span>
+          </p>
+          <span class="arrow" aria-hidden="true">↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLORS -->
+    <section id="colors" class="ds-page-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__num mono">01 / <span data-lang="pt">Cores</span><span data-lang="en">Colors</span></div>
+          <h2 class="section-head__title">
+            <span data-lang="pt">Paleta de <em class="italic">cores</em></span>
+            <span data-lang="en"><em class="italic">Color</em> palette</span>
+          </h2>
+        </div>
+
+        <!-- Light Theme -->
+        <div>
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Tema Claro</span>
+            <span data-lang="en">Light Theme</span>
+          </h3>
+          <div class="ds-grid">
+            <div>
+              <div class="ds-color-swatch light" style="background: #ECE8DF;">#ECE8DF</div>
+              <p class="ds-type-label">--bg</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch light" style="background: #E4DFD3;">#E4DFD3</div>
+              <p class="ds-type-label">--bg-soft</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch light" style="background: #F4F1EA;">#F4F1EA</div>
+              <p class="ds-type-label">--bg-elev</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #131211;">#131211</div>
+              <p class="ds-type-label">--text</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #7A756A;">#7A756A</div>
+              <p class="ds-type-label">--muted</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #D94E1F;">#D94E1F</div>
+              <p class="ds-type-label">--accent</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark Theme -->
+        <div style="margin-top: 3rem;">
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Tema Escuro</span>
+            <span data-lang="en">Dark Theme</span>
+          </h3>
+          <div class="ds-grid">
+            <div>
+              <div class="ds-color-swatch" style="background: #0D0C0A;">#0D0C0A</div>
+              <p class="ds-type-label">--bg</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #141210;">#141210</div>
+              <p class="ds-type-label">--bg-soft</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #1C1A17;">#1C1A17</div>
+              <p class="ds-type-label">--bg-elev</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch light" style="background: #ECE8DF;">#ECE8DF</div>
+              <p class="ds-type-label">--text</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch light" style="background: #817A6E;">#817A6E</div>
+              <p class="ds-type-label">--muted</p>
+            </div>
+            <div>
+              <div class="ds-color-swatch" style="background: #E8673A;">#E8673A</div>
+              <p class="ds-type-label">--accent</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contrast Info -->
+        <div class="ds-component" style="margin-top: 3rem;">
+          <h4><span data-lang="pt">Contraste WCAG</span><span data-lang="en">WCAG Contrast</span></h4>
+          <div style="font-size: var(--step-0); line-height: 1.8;">
+            <p><strong><span data-lang="pt">Texto em fundo:</span><span data-lang="en">Text on background:</span></strong> 14.5:1 (Light), 15.2:1 (Dark) — <span style="color: var(--accent);">AAA</span></p>
+            <p><strong><span data-lang="pt">Destaque:</span><span data-lang="en">Accent:</span></strong> 4.8:1 (Light), 5.1:1 (Dark) — <span style="color: var(--accent);">AA</span></p>
+            <p><strong><span data-lang="pt">Texto muted:</span><span data-lang="en">Muted text:</span></strong> 4.2:1 (Light), 3.8:1 (Dark) — <span style="color: var(--accent);">AA</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography" class="ds-page-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__num mono">02 / <span data-lang="pt">Tipografia</span><span data-lang="en">Typography</span></div>
+          <h2 class="section-head__title">
+            <span data-lang="pt">Escala e <em class="italic">fontes</em></span>
+            <span data-lang="en"><em class="italic">Scale</em> and fonts</span>
+          </h2>
+        </div>
+
+        <!-- Typefaces -->
+        <div>
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Famílias de Fontes</span>
+            <span data-lang="en">Typefaces</span>
+          </h3>
+
+          <div class="ds-component">
+            <h4 style="font-family: var(--font-display); font-size: var(--step-4); letter-spacing: -0.01em;">Lora</h4>
+            <p class="ds-type-label">Display • Headlines • Elegant Serif</p>
+            <p style="margin-top: 1rem; line-height: 1.6;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</p>
+          </div>
+
+          <div class="ds-component">
+            <h4 style="font-family: var(--font-body); font-size: var(--step-2); font-weight: 400;">Inter</h4>
+            <p class="ds-type-label">Body • UI Text • Regular</p>
+            <p style="margin-top: 1rem; line-height: 1.6;">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</p>
+          </div>
+
+          <div class="ds-component">
+            <h4 style="font-family: var(--font-mono); font-size: var(--step-1);">JetBrains Mono</h4>
+            <p class="ds-type-label">Monospace • Labels • Code</p>
+            <p style="margin-top: 1rem; line-height: 1.6; font-family: var(--font-mono);">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</p>
+          </div>
+        </div>
+
+        <!-- Type Scale -->
+        <div style="margin-top: 3rem;">
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Escala de Tipos</span>
+            <span data-lang="en">Type Scale</span>
+          </h3>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-6); line-height: 0.9; letter-spacing: -0.04em; font-weight: 500;">Display XL</div>
+            <p class="ds-type-label">--step-6 • 80-176px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-5); line-height: 0.92; letter-spacing: -0.035em; font-weight: 500;">Display Large</div>
+            <p class="ds-type-label">--step-5 • 58-115px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-4); line-height: 0.95; letter-spacing: -0.025em; font-weight: 500;">Display Medium</div>
+            <p class="ds-type-label">--step-4 • 38-67px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-3); line-height: 0.95; letter-spacing: -0.02em; font-weight: 500;">Display Small</div>
+            <p class="ds-type-label">--step-3 • 28-42px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.01em; font-weight: 300;">Lead Text — Introductory paragraph</div>
+            <p class="ds-type-label">--step-2 • 22-29px (Weight: 300)</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-1); line-height: 1.5;">Body text — Regular paragraph content for reading</div>
+            <p class="ds-type-label">--step-1 • 18-21px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step-0); line-height: 1.5;">Small text for UI labels and metadata</div>
+            <p class="ds-type-label">--step-0 • 15-16px</p>
+          </div>
+
+          <div class="ds-type-sample">
+            <div style="font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);">Caption / Eyebrow</div>
+            <p class="ds-type-label">--step--1 • 12-13px (Mono, Uppercase)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section id="components" class="ds-page-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__num mono">03 / <span data-lang="pt">Componentes</span><span data-lang="en">Components</span></div>
+          <h2 class="section-head__title">
+            <span data-lang="pt">Elementos <em class="italic">reutilizáveis</em></span>
+            <span data-lang="en"><em class="italic">Reusable</em> elements</span>
+          </h2>
+        </div>
+
+        <!-- Buttons -->
+        <div class="ds-component">
+          <h4><span data-lang="pt">Botões</span><span data-lang="en">Buttons</span></h4>
+          <div class="ds-button-group">
+            <button class="ds-button"><span data-lang="pt">Secundário</span><span data-lang="en">Secondary</span></button>
+            <button class="ds-button primary"><span data-lang="pt">Primário</span><span data-lang="en">Primary</span></button>
+            <button class="ds-button" disabled><span data-lang="pt">Desabilitado</span><span data-lang="en">Disabled</span></button>
+          </div>
+          <div class="ds-code">
+&lt;button class="ds-button"&gt;<span data-lang="pt">Texto</span><span data-lang="en">Text</span>&lt;/button&gt;
+&lt;button class="ds-button primary"&gt;<span data-lang="pt">Primário</span><span data-lang="en">Primary</span>&lt;/button&gt;
+          </div>
+        </div>
+
+        <!-- Links -->
+        <div class="ds-component">
+          <h4><span data-lang="pt">Links</span><span data-lang="en">Links</span></h4>
+          <p><a href="#" style="position: relative; color: var(--accent);">
+            <span data-lang="pt">Link com animação de underline</span>
+            <span data-lang="en">Link with underline animation</span>
+            <span style="position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 0.5s;"></span>
+          </a></p>
+          <p style="margin-top: 0.5rem;"><span data-lang="pt">Passe o mouse para ver a animação</span><span data-lang="en">Hover to see the animation</span></p>
+        </div>
+
+        <!-- Cards -->
+        <div class="ds-component">
+          <h4><span data-lang="pt">Cards</span><span data-lang="en">Cards</span></h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--gutter);">
+            <div style="padding: 1.5rem; background: var(--bg); border: 1px solid var(--line); border-radius: 4px;">
+              <h5 style="font-size: var(--step-1); margin-bottom: 0.5rem;"><span data-lang="pt">Card Padrão</span><span data-lang="en">Default Card</span></h5>
+              <p style="font-size: var(--step-0); color: var(--muted); line-height: 1.5;"><span data-lang="pt">Elemento básico para agrupar conteúdo relacionado.</span><span data-lang="en">Basic element for grouping related content.</span></p>
+            </div>
+            <div style="padding: 1.5rem; background: var(--bg); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden;" onmouseover="this.style.borderColor = 'var(--accent)'; this.style.boxShadow = '0 10px 30px rgba(217, 78, 31, 0.1)';" onmouseout="this.style.borderColor = ''; this.style.boxShadow = '';">
+              <h5 style="font-size: var(--step-1); margin-bottom: 0.5rem; color: var(--accent);"><span data-lang="pt">Card Interativa</span><span data-lang="en">Interactive Card</span></h5>
+              <p style="font-size: var(--step-0); color: var(--muted); line-height: 1.5;"><span data-lang="pt">Com efeito hover e aumento de sombra.</span><span data-lang="en">With hover effect and shadow increase.</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spacing -->
+        <div class="ds-component">
+          <h4><span data-lang="pt">Espaçamento</span><span data-lang="en">Spacing</span></h4>
+          <p style="margin-bottom: 1rem; color: var(--muted);">
+            <span data-lang="pt">Cada quadrado representa uma unidade da escala de espaçamento</span>
+            <span data-lang="en">Each square represents a spacing scale unit</span>
+          </p>
+          <div class="ds-spacing-demo">
+            <div class="ds-spacing-box">0.5rem</div>
+            <div class="ds-spacing-box">1rem</div>
+            <div class="ds-spacing-box">1.5rem</div>
+            <div class="ds-spacing-box">2rem</div>
+            <div class="ds-spacing-box">--gutter</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section id="motion" class="ds-page-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__num mono">04 / <span data-lang="pt">Movimento</span><span data-lang="en">Motion</span></div>
+          <h2 class="section-head__title">
+            <span data-lang="pt">Animações e <em class="italic">transições</em></span>
+            <span data-lang="en">Animations & <em class="italic">transitions</em></span>
+          </h2>
+        </div>
+
+        <!-- Easing Functions -->
+        <div>
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Curvas de Easing</span>
+            <span data-lang="en">Easing Curves</span>
+          </h3>
+
+          <div class="ds-component">
+            <h5><span data-lang="pt">--ease (Smooth, Bouncy)</span><span data-lang="en">--ease (Smooth, Bouncy)</span></h5>
+            <p style="font-family: var(--font-mono); font-size: var(--step-0); color: var(--muted); margin: 0.5rem 0 1rem;">cubic-bezier(0.65, 0.05, 0.05, 0.95)</p>
+            <div class="ds-motion-demo slide" style="animation: ds-slide 2s cubic-bezier(0.65, 0.05, 0.05, 0.95) infinite;"></div>
+          </div>
+
+          <div class="ds-component">
+            <h5><span data-lang="pt">--ease-out (Quick Release)</span><span data-lang="en">--ease-out (Quick Release)</span></h5>
+            <p style="font-family: var(--font-mono); font-size: var(--step-0); color: var(--muted); margin: 0.5rem 0 1rem;">cubic-bezier(0.16, 1, 0.3, 1)</p>
+            <div class="ds-motion-demo fade" style="animation: ds-fade 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;"></div>
+          </div>
+
+          <div class="ds-component">
+            <h5><span data-lang="pt">--ease-in (Slow Start)</span><span data-lang="en">--ease-in (Slow Start)</span></h5>
+            <p style="font-family: var(--font-mono); font-size: var(--step-0); color: var(--muted); margin: 0.5rem 0 1rem;">cubic-bezier(0.7, 0, 0.84, 0)</p>
+            <div class="ds-motion-demo scale" style="animation: ds-scale 2s cubic-bezier(0.7, 0, 0.84, 0) infinite;"></div>
+          </div>
+        </div>
+
+        <!-- Durations -->
+        <div style="margin-top: 3rem;">
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Durações</span>
+            <span data-lang="en">Durations</span>
+          </h3>
+
+          <div class="ds-component">
+            <p><strong>--dur:</strong> <span style="font-family: var(--font-mono); color: var(--muted);">0.6s</span> — <span data-lang="pt">Animações padrão (entrada, saída)</span><span data-lang="en">Standard animations (entrance, exit)</span></p>
+            <p style="margin-top: 0.5rem;"><strong>--dur-fast:</strong> <span style="font-family: var(--font-mono); color: var(--muted);">0.3s</span> — <span data-lang="pt">Interações rápidas (hover, clique)</span><span data-lang="en">Quick interactions (hover, click)</span></p>
+          </div>
+        </div>
+
+        <!-- Accessibility -->
+        <div style="margin-top: 3rem;">
+          <h3 style="font-size: var(--step-2); margin-bottom: 1.5rem;">
+            <span data-lang="pt">Acessibilidade</span>
+            <span data-lang="en">Accessibility</span>
+          </h3>
+          <div class="ds-component">
+            <p style="color: var(--muted); font-size: var(--step-0); line-height: 1.8;">
+              <strong><span data-lang="pt">Respeita prefers-reduced-motion:</span><span data-lang="en">Respects prefers-reduced-motion:</span></strong><br>
+              <span data-lang="pt">Se o usuário tiver "Reduzir movimento" ativado nas configurações do SO, todas as animações são desabilitadas.</span><span data-lang="en">If the user has "Reduce motion" enabled in OS settings, all animations are disabled.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPONSIVE -->
+    <section class="ds-page-section">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-head__num mono">05 / <span data-lang="pt">Responsividade</span><span data-lang="en">Responsiveness</span></div>
+          <h2 class="section-head__title">
+            <span data-lang="pt">Breakpoints e <em class="italic">adaptação</em></span>
+            <span data-lang="en">Breakpoints & <em class="italic">adaptation</em></span>
+          </h2>
+        </div>
+
+        <div class="ds-component">
+          <table style="width: 100%; border-collapse: collapse; font-size: var(--step-0);">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <th style="text-align: left; padding: 0.75rem 0;"><span data-lang="pt">Breakpoint</span><span data-lang="en">Breakpoint</span></th>
+                <th style="text-align: left; padding: 0.75rem 0;"><span data-lang="pt">Caso de Uso</span><span data-lang="en">Use Case</span></th>
+                <th style="text-align: left; padding: 0.75rem 0;"><span data-lang="pt">Alterações</span><span data-lang="en">Changes</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 0.75rem 0;">Desktop</td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Laptop / Desktop (padrão)</span><span data-lang="en">Laptop / Desktop (default)</span></td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Todos os elementos visíveis, 4 colunas</span><span data-lang="en">All elements visible, 4 columns</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 0.75rem 0;">900px</td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Tablet horizontal</span><span data-lang="en">Tablet landscape</span></td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Previews ocultos, grid 3 colunas</span><span data-lang="en">Previews hidden, 3-column grid</span></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--line);">
+                <td style="padding: 0.75rem 0;">820px</td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Tablet vertical</span><span data-lang="en">Tablet portrait</span></td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Layout 1 coluna, grid 2 colunas</span><span data-lang="en">1-column layout, 2-column grid</span></td>
+              </tr>
+              <tr>
+                <td style="padding: 0.75rem 0;">720px</td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Mobile</span><span data-lang="en">Mobile</span></td>
+                <td style="padding: 0.75rem 0;"><span data-lang="pt">Fullwidth, font reduzida, 1 coluna</span><span data-lang="en">Fullwidth, reduced font, 1 column</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>© <span data-year></span> Ney Barão — Design System v1.0</div>
+      <div><a href="index.html"><span data-lang="pt">Voltar ao portfólio</span><span data-lang="en">Back to portfolio</span></a></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

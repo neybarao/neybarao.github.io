@@ -79,7 +79,7 @@ textarea {
   --curtain-text: #ECE8DF;
 
   /* Typography */
-  --font-display: "Instrument Sans", "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-display: "Lora", Georgia, serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
@@ -136,31 +136,33 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 0.95;
+  line-height: 1.05;
 }
 
 .display-xl {
   font-size: var(--step-6);
   letter-spacing: -0.04em;
-  line-height: 0.9;
+  line-height: 1.0;
 }
 
 .display-l {
   font-size: var(--step-5);
   letter-spacing: -0.035em;
-  line-height: 0.92;
+  line-height: 1.05;
 }
 
 .display-m {
   font-size: var(--step-4);
   letter-spacing: -0.025em;
+  line-height: 1.05;
 }
 
 .display-s {
   font-size: var(--step-3);
   letter-spacing: -0.02em;
+  line-height: 1.0;
 }
 
 .eyebrow {
@@ -1201,7 +1203,7 @@ section {
 
 .line-clip {
   display: block;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .line-clip>* {
