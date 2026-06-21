@@ -1,303 +1,101 @@
-/* ==========================================================================
-   Ney Barão — Portfolio JS
-   - Theme & language toggle
-   - Custom cursor
-   - Page transition (curtain)
-   - Scroll reveal
-   - Parallax
-   - Magnetic hover
-   - Work list image preview
-   - Live clock in São Paulo time
-   ========================================================================== */
-
-(() => {
-  'use strict';
+/* =========================================================
+   Ney Barão, Portfolio
+   Theme + language toggles, and GSAP motion layer.
+   All motion respects prefers-reduced-motion.
+   ========================================================= */
+(function () {
+  "use strict";
 
   const html = document.documentElement;
-  const body = document.body;
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const STORAGE = { theme: 'nb_theme', lang: 'nb_lang' };
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  /* --------------- THEME ---------------- */
-  const savedTheme = localStorage.getItem(STORAGE.theme);
-  const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = savedTheme || (systemDark ? 'dark' : 'light');
-  html.setAttribute('data-theme', initialTheme);
+  /* ---- Theme --------------------------------------------- */
+  const THEME_KEY = "nb_theme";
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+  function applyTheme(t){ html.setAttribute("data-theme", t); try{localStorage.setItem(THEME_KEY,t);}catch(e){} }
+  function initTheme(){ let t; try{t=localStorage.getItem(THEME_KEY);}catch(e){} if(!t) t=prefersDark.matches?"dark":"light"; applyTheme(t); }
+  function toggleTheme(){ applyTheme(html.getAttribute("data-theme")==="dark"?"light":"dark"); }
 
-  function toggleTheme() {
-    const current = html.getAttribute('data-theme');
-    const next = current === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem(STORAGE.theme, next);
-    updateThemeButton(next);
+  /* ---- Language ------------------------------------------ */
+  const LANG_KEY = "nb_lang";
+  function applyLang(l){
+    html.setAttribute("data-lang", l);
+    html.setAttribute("lang", l==="pt"?"pt-BR":"en");
+    document.querySelectorAll("[data-lang-toggle]").forEach(b=>{ b.textContent = l==="pt"?"EN":"PT"; });
+    try{localStorage.setItem(LANG_KEY,l);}catch(e){}
   }
-  function updateThemeButton(theme) {
-    document.querySelectorAll('[data-theme-toggle]').forEach(btn => {
-      btn.innerHTML = theme === 'dark'
-        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>'
-        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
-      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
-    });
-  }
-  updateThemeButton(initialTheme);
+  function initLang(){ let l; try{l=localStorage.getItem(LANG_KEY);}catch(e){} if(!l) l="en"; applyLang(l); }
+  function toggleLang(){ applyLang(html.getAttribute("data-lang")==="pt"?"en":"pt"); }
 
-  /* --------------- LANGUAGE ------------- */
-  const savedLang = localStorage.getItem(STORAGE.lang) || (navigator.language?.startsWith('pt') ? 'pt' : 'en');
-  html.setAttribute('data-lang', savedLang);
-  html.setAttribute('lang', savedLang === 'pt' ? 'pt-BR' : 'en');
-
-  function toggleLang() {
-    const current = html.getAttribute('data-lang');
-    const next = current === 'pt' ? 'en' : 'pt';
-    html.setAttribute('data-lang', next);
-    html.setAttribute('lang', next === 'pt' ? 'pt-BR' : 'en');
-    localStorage.setItem(STORAGE.lang, next);
-    updateLangButton(next);
-  }
-  function updateLangButton(lang) {
-    document.querySelectorAll('[data-lang-toggle]').forEach(btn => {
-      btn.textContent = lang === 'pt' ? 'EN' : 'PT';
-      btn.setAttribute('aria-label', `Switch to ${lang === 'pt' ? 'English' : 'Portuguese'}`);
-    });
-  }
-  updateLangButton(savedLang);
-
-  document.addEventListener('click', (e) => {
-    const t = e.target.closest('[data-theme-toggle]');
-    const l = e.target.closest('[data-lang-toggle]');
-    if (t) { e.preventDefault(); toggleTheme(); }
-    if (l) { e.preventDefault(); toggleLang(); }
+  /* ---- Wire up toggles ----------------------------------- */
+  initTheme();
+  initLang();
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("[data-theme-toggle]")) { toggleTheme(); return; }
+    if (e.target.closest("[data-lang-toggle]")) { toggleLang(); return; }
   });
 
-  /* --------------- CURSOR --------------- */
-  if (hasFinePointer && !prefersReduced) {
-    const dot = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.className = 'cursor-dot';
-    ring.className = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-    body.classList.add('no-cursor');
-
-    let mx = window.innerWidth/2, my = window.innerHeight/2;
-    let dx = mx, dy = my, rx = mx, ry = my;
-
-    window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-    window.addEventListener('mouseleave', () => {
-      dot.style.opacity = '0'; ring.style.opacity = '0';
-    });
-    window.addEventListener('mouseenter', () => {
-      dot.style.opacity = ''; ring.style.opacity = '';
-    });
-
-    function raf() {
-      dx += (mx - dx) * 0.9;
-      dy += (my - dy) * 0.9;
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
-      dot.style.transform = `translate3d(${dx - 3}px, ${dy - 3}px, 0)`;
-      ring.style.transform = `translate3d(${rx - 18}px, ${ry - 18}px, 0)`;
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Hover states
-    const hoverables = 'a, button, [data-cursor="hover"], .work-item';
-    document.addEventListener('mouseover', (e) => {
-      const hov = e.target.closest(hoverables);
-      if (hov) { dot.classList.add('is-hover'); ring.classList.add('is-hover'); }
-      if (e.target.closest('[data-cursor="text"]')) { ring.classList.add('is-text'); }
-    });
-    document.addEventListener('mouseout', (e) => {
-      const hov = e.target.closest(hoverables);
-      if (hov) { dot.classList.remove('is-hover'); ring.classList.remove('is-hover'); }
-      if (e.target.closest('[data-cursor="text"]')) { ring.classList.remove('is-text'); }
-    });
+  /* ---- Motion (GSAP) ------------------------------------- */
+  function hideLoader(instant){
+    const loader = document.getElementById("loader");
+    if (!loader) return;
+    if (instant || !window.gsap) { loader.style.display = "none"; return; }
   }
 
-  /* --------------- PAGE TRANSITIONS ----- */
-  let curtain = document.querySelector('.curtain');
-  if (!curtain) {
-    curtain = document.createElement('div');
-    curtain.className = 'curtain';
-    curtain.setAttribute('data-state', 'reveal');
-    curtain.innerHTML = '<span class="curtain__word" aria-hidden="true">Ney Barão</span>';
-    document.body.insertBefore(curtain, document.body.firstChild);
-  }
+  function initMotion(){
+    const loader = document.getElementById("loader");
+    if (prefersReduced.matches || !window.gsap) { if (loader) loader.style.display = "none"; return; }
 
-  // After initial reveal finishes, park the curtain in "hide" (above screen)
-  const initialDur = 1050;
-  setTimeout(() => {
-    if (curtain.getAttribute('data-state') === 'reveal') {
-      curtain.setAttribute('data-state', 'hide');
+    const gsap = window.gsap;
+    if (window.ScrollTrigger) gsap.registerPlugin(window.ScrollTrigger);
+
+    // Loading curtain: reveal name, then lift the curtain.
+    const tl = gsap.timeline();
+    if (loader) {
+      const nm = loader.querySelector(".loader__name");
+      tl.to(nm, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 0.1)
+        .to(loader, { yPercent: -100, duration: 0.8, ease: "power4.inOut" }, "+=0.35")
+        .set(loader, { display: "none" });
     }
-  }, initialDur);
 
-  function isInternal(href) {
-    try {
-      const url = new URL(href, window.location.href);
-      return url.origin === window.location.origin;
-    } catch { return false; }
-  }
-
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href]');
-    if (!a) return;
-    const href = a.getAttribute('href');
-    if (!href) return;
-    if (a.target === '_blank' || a.hasAttribute('download')) return;
-    if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('#')) return;
-    if (!isInternal(a.href)) return;
-    if (a.dataset.noTransition !== undefined) return;
-
-    // Same-page hash navigation (e.g. /foo#bar from /foo)
-    const target = new URL(a.href);
-    if (target.pathname === window.location.pathname && target.hash) return;
-
-    // Page transition: curtain rises from below to cover, then navigate
-    e.preventDefault();
-    curtain.setAttribute('data-state', 'hide');
-    curtain.style.transform = 'translateY(100%)';
-    // Force reflow so the next class change triggers the animation cleanly
-    void curtain.offsetHeight;
-    curtain.style.transform = '';
-    curtain.setAttribute('data-state', 'cover');
-
-    setTimeout(() => { window.location.href = a.href; }, 600);
-  });
-
-  window.addEventListener('pageshow', (e) => {
-    if (e.persisted) {
-      // Back from bfcache — ensure curtain is out of the way
-      curtain.setAttribute('data-state', 'hide');
-      curtain.style.transform = '';
+    // Hero intro reveal, chained after the curtain.
+    const heroBits = gsap.utils.toArray(".hero__name, .hero__intro, .case-hero__inner > *");
+    if (heroBits.length) {
+      tl.from(heroBits, { opacity: 0, y: 40, duration: 0.9, stagger: 0.08, ease: "power3.out" }, "-=0.2");
     }
-  });
 
-  /* --------------- SCROLL REVEAL -------- */
-  if ('IntersectionObserver' in window && !prefersReduced) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
+    // Scroll-reveal for everything below the fold.
+    const reveals = gsap.utils.toArray(
+      ".section__head, .about__statement, .about__cols, .approach__card, .work-card, .exp-row, .clients__row, .footer__headline, .footer__email, .footer__bottom, .case-intro__lead, .case-meta, .case-split, .case-figure, .case-metrics"
+    );
+    reveals.forEach((el) => {
+      gsap.from(el, {
+        opacity: 0, y: 48, duration: 0.9, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%" }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.02 });
+    });
 
-    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-  } else {
-    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('is-visible'));
-  }
-
-  /* --------------- PARALLAX ------------- */
-  if (!prefersReduced) {
-    const parallaxEls = Array.from(document.querySelectorAll('[data-parallax]'));
-    if (parallaxEls.length) {
-      let ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      }
-      function updateParallax() {
-        const vh = window.innerHeight;
-        parallaxEls.forEach(el => {
-          const rect = el.getBoundingClientRect();
-          if (rect.bottom < -200 || rect.top > vh + 200) return;
-          const speed = parseFloat(el.dataset.parallax) || 0.1;
-          const center = rect.top + rect.height / 2 - vh / 2;
-          const y = -center * speed;
-          el.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0)`;
+    // Subtle parallax on full-bleed images.
+    if (window.ScrollTrigger) {
+      gsap.utils.toArray(".case-figure--bleed img").forEach((img) => {
+        gsap.fromTo(img, { yPercent: -8 }, {
+          yPercent: 8, ease: "none",
+          scrollTrigger: { trigger: img.parentElement, scrub: true, start: "top bottom", end: "bottom top" }
         });
-        ticking = false;
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', updateParallax);
-      updateParallax();
+      });
     }
-  }
 
-  /* --------------- MAGNETIC HOVER ------- */
-  if (hasFinePointer && !prefersReduced) {
-    document.querySelectorAll('[data-magnetic]').forEach(el => {
-      const strength = parseFloat(el.dataset.magnetic) || 0.28;
-      let bx = 0, by = 0, tx = 0, ty = 0, raf;
-
-      const loop = () => {
-        bx += (tx - bx) * 0.18;
-        by += (ty - by) * 0.18;
-        el.style.transform = `translate3d(${bx.toFixed(2)}px, ${by.toFixed(2)}px, 0)`;
-        if (Math.abs(tx - bx) > 0.05 || Math.abs(ty - by) > 0.05) {
-          raf = requestAnimationFrame(loop);
-        } else { raf = null; }
-      };
-      el.addEventListener('mousemove', (e) => {
+    // Magnetic hover.
+    document.querySelectorAll("[data-magnetic], .nav__cta, .btn").forEach((el) => {
+      const strength = parseFloat(el.getAttribute("data-magnetic")) || 0.3;
+      el.addEventListener("pointermove", (e) => {
         const r = el.getBoundingClientRect();
-        tx = (e.clientX - (r.left + r.width/2)) * strength;
-        ty = (e.clientY - (r.top + r.height/2)) * strength;
-        if (!raf) raf = requestAnimationFrame(loop);
+        gsap.to(el, { x: (e.clientX - r.left - r.width/2) * strength, y: (e.clientY - r.top - r.height/2) * strength, duration: 0.4, ease: "power3.out" });
       });
-      el.addEventListener('mouseleave', () => {
-        tx = 0; ty = 0;
-        if (!raf) raf = requestAnimationFrame(loop);
-      });
+      el.addEventListener("pointerleave", () => gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1,0.4)" }));
     });
   }
 
-  /* --------------- WORK LIST PREVIEW ---- */
-  if (hasFinePointer && !prefersReduced) {
-    const previews = new Map();
-    document.querySelectorAll('.work-item').forEach(item => {
-      const preview = item.querySelector('.work-item__preview');
-      if (!preview) return;
-      // Move the preview to <body> so it floats over everything
-      document.body.appendChild(preview);
-      previews.set(item, preview);
-
-      let mx = 0, my = 0, cx = 0, cy = 0, raf;
-      const loop = () => {
-        cx += (mx - cx) * 0.18;
-        cy += (my - cy) * 0.18;
-        preview.style.left = cx + 'px';
-        preview.style.top = cy + 'px';
-        if (Math.abs(mx - cx) > 0.4 || Math.abs(my - cy) > 0.4) {
-          raf = requestAnimationFrame(loop);
-        } else { raf = null; }
-      };
-
-      item.addEventListener('mouseenter', () => {
-        preview.classList.add('is-visible');
-      });
-      item.addEventListener('mousemove', (e) => {
-        mx = e.clientX; my = e.clientY;
-        if (!raf) raf = requestAnimationFrame(loop);
-      });
-      item.addEventListener('mouseleave', () => {
-        preview.classList.remove('is-visible');
-      });
-    });
-  }
-
-  /* --------------- LIVE CLOCK ----------- */
-  function updateClock() {
-    const clock = document.querySelector('[data-clock]');
-    if (!clock) return;
-    try {
-      const now = new Date();
-      const opts = { timeZone: 'America/Campo_Grande', hour: '2-digit', minute: '2-digit', hour12: false };
-      const t = now.toLocaleTimeString('pt-BR', opts);
-      clock.textContent = `Campo Grande — ${t}`;
-    } catch { /* noop */ }
-  }
-  updateClock();
-  setInterval(updateClock, 15_000);
-
-  /* --------------- YEAR ----------------- */
-  document.querySelectorAll('[data-year]').forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
-
+  if (document.readyState === "complete") initMotion();
+  else window.addEventListener("load", initMotion);
 })();

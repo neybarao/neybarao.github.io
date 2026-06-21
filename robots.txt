@@ -1,4 +1,22 @@
+# Ney Barão — portfolio
+# All crawlers welcome, including AI assistants.
 User-agent: *
+Allow: /
+
+# Explicitly welcome AI crawlers (citation / answer engines)
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://neybarao.github.io/sitemap.xml

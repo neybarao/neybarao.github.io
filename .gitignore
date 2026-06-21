@@ -70,3 +70,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+
+# Claude Code local config & worktrees
+.claude/
