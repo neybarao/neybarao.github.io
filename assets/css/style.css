@@ -68,6 +68,15 @@ button { background: none; border: none; cursor: pointer; }
 a { text-decoration: none; }
 ul { list-style: none; padding: 0; }
 
+/* Keyboard focus visibility (accessibility) */
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.nav :focus-visible { outline-color: #fff; }
+.case-hero :focus-visible { outline-color: #fff; }
+
 /* Language visibility */
 [data-lang="en"] [data-lang="pt"] { display: none; }
 [data-lang="pt"] [data-lang="en"] { display: none; }
