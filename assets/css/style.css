@@ -174,7 +174,7 @@ body {
 
 .nav__tools { display: flex; align-items: center; gap: 0.5rem; }
 .tool-btn {
-  width: 36px; height: 36px;
+  width: 42px; height: 42px;
   display: grid; place-items: center;
   border: 1px solid rgba(255,255,255,0.4);
   border-radius: 50%;
