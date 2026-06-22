@@ -216,7 +216,13 @@ body {
   background: var(--media);
   overflow: hidden;
 }
+.hero__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .hero__img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
