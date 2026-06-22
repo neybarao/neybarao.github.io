@@ -31,6 +31,8 @@ jobs:
           mkdir -p _site
           cp index.html 404.html robots.txt sitemap.xml site.webmanifest _site/
           cp -r assets work _site/
+          # Preserve the custom domain on every deploy
+          [ -f CNAME ] && cp CNAME _site/ || true
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
