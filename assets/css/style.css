@@ -213,17 +213,20 @@ body {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    radial-gradient(120% 90% at 50% 10%, color-mix(in srgb, var(--media) 70%, var(--bg)) 0%, var(--media) 60%, color-mix(in srgb, var(--media) 60%, var(--black)) 100%);
-  display: grid;
-  place-items: center;
+  background: var(--media);
+  overflow: hidden;
 }
-.hero__placeholder-note {
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: color-mix(in srgb, var(--fg) 35%, transparent);
+.hero__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+}
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.45) 100%);
 }
 
 .hero__top {
@@ -244,8 +247,9 @@ body {
   flex-direction: column;
   gap: 0.6rem;
 }
-.hero__intro p { font-size: var(--step-1); line-height: 1.4; }
+.hero__intro p { font-size: var(--step-1); line-height: 1.4; color: #fff; }
 .hero__eyebrow { color: var(--accent); }
+.hero__cred { color: rgba(255,255,255,0.72); }
 
 .hero__name {
   font-family: var(--font-display);
@@ -254,6 +258,7 @@ body {
   line-height: 0.82;
   letter-spacing: -0.03em;
   white-space: nowrap;
+  color: #fff;
 }
 .hero__name-mark { color: var(--accent); }
 
@@ -448,6 +453,34 @@ body {
 }
 [data-theme="dark"] { --logo-invert: 1; }
 .clients__row img:hover { opacity: 1; }
+
+/* Clients marquee (right to left) */
+.marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee img {
+  height: 30px;
+  width: auto;
+  flex: none;
+  margin-inline: clamp(1.75rem, 4vw, 3.5rem);
+  filter: grayscale(1) brightness(0) invert(var(--logo-invert, 0));
+  opacity: 0.5;
+  transition: opacity 0.3s var(--ease);
+}
+.marquee img:hover { opacity: 1; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---- Footer ----------------------------------------------- */
 .footer {
