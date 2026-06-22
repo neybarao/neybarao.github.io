@@ -66,7 +66,7 @@
 
     // Scroll-reveal for everything below the fold.
     const reveals = gsap.utils.toArray(
-      ".section__head, .about__statement, .about__cols, .approach__card, .work-card, .exp-row, .clients__row, .footer__headline, .footer__email, .footer__bottom, .case-intro__lead, .case-meta, .case-split, .case-figure, .case-metrics"
+      ".section__head, .about__statement, .about__cols, .approach__card, .work-card, .exp-row, .clients__row, .footer__headline, .footer__email, .case-intro__lead, .case-meta, .case-split, .case-figure, .case-metrics"
     );
     reveals.forEach((el) => {
       gsap.from(el, {
