@@ -464,6 +464,7 @@ body {
 }
 .marquee__track {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   width: max-content;
   animation: marquee 40s linear infinite;
@@ -473,6 +474,7 @@ body {
 .marquee img {
   height: 30px;
   width: auto;
+  max-width: none;
   flex: none;
   margin-inline: clamp(1.75rem, 4vw, 3.5rem);
   filter: grayscale(1) brightness(0) invert(var(--logo-invert, 0));
