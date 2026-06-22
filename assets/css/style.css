@@ -5,8 +5,8 @@
 
 /* ---- Tokens ------------------------------------------------ */
 :root {
-  /* Accent (placeholder, a ser definido pelo Ney) */
-  --accent: #ff4a1c;
+  /* Accent */
+  --accent: #FF2F1C;
 
   /* Neutral ramp */
   --black: #0a0a0a;
