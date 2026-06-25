@@ -19,4 +19,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://neybarao.github.io/sitemap.xml
+Sitemap: https://www.neybarao.com/sitemap.xml
