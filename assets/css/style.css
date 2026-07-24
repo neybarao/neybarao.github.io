@@ -880,6 +880,19 @@ body {
   .work-card:first-child .work-card__media {
     aspect-ratio: 16 / 10;
   }
+
+  .footer__main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .footer__social {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
 }
 
 /* ===========================================================
