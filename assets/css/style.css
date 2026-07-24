@@ -836,7 +836,28 @@ body {
 
 .footer__badge {
   margin: clamp(2.5rem, 6vw, 4rem) auto 0;
-  text-align: center;
+  display: flex;
+  gap: clamp(1.25rem, 3vw, 2.25rem);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer__badge-nngroup {
+  display: inline-block;
+  width: 214px;
+  line-height: 0;
+  transition: transform 0.3s var(--ease);
+}
+
+.footer__badge-nngroup:hover {
+  transform: translateY(-2px);
+}
+
+.footer__badge-nngroup svg {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ---- Responsive ------------------------------------------- */
