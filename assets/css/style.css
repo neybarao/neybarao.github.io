@@ -834,6 +834,11 @@ body {
   color: var(--accent);
 }
 
+.footer__badge {
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  text-align: center;
+}
+
 /* ---- Responsive ------------------------------------------- */
 @media (max-width: 960px) {
   .approach__grid {
@@ -1002,11 +1007,13 @@ body {
 .case-figure--bleed {
   max-width: 100%;
   padding-inline: 0;
+  overflow: hidden;
 }
 
 .case-figure--bleed img {
   border-radius: 0;
   max-height: 82vh;
+  will-change: transform;
 }
 
 .case-split {
